@@ -5,7 +5,7 @@ USE employees;
 
 CREATE TABLE department (
   -- CREATE id, name COLUMNS
-  id INT PRIMARY KEY,
+  id INT PRIMARY KEY auto_increment,
   name VARCHAR(30)
 );
 
@@ -13,11 +13,11 @@ CREATE TABLE role (
   -- CREATE id AS INTERGER,
   id INT PRIMARY KEY auto_increment,
   -- title AS VARCHAR
-  tile VARCHAR(30),
+  title VARCHAR(30),
   -- salary AS DECIMAL
-  salary DECIMAL(7,2),
+  salary DECIMAL(10,2),
   -- department_id AS INTEGER
-  department_id INT,
+  department_id INT
   -- MAKE department_id AS FOREIGN KEY REFERENCING department TABLE AND
   -- MAKE AN CONSTRAINT 'ON DELETEN CASCADE' (WITHOUT QUOTES) ON THIS FOREIGN KEY
 );
