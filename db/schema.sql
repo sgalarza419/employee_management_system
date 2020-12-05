@@ -1,37 +1,39 @@
--- Drops employee_db if it exists already
-DROP DATABASE IF EXISTS employee_db;
--- Creates the "employee_db" database
-CREATE DATABASE employee_db;
+DROP DATABASE IF EXISTS employees;
+CREATE DATABASE employees;
 
-CREATE TABLE employee(
-    id INT,
-    first_name VARCHAR(30),
-    last_name VARCHAR(30),
-    role_id INT,
-    manager_id INT,
-    PRIMARY KEY (id)
+USE employees;
+
+CREATE TABLE department (
+  -- CREATE id, name COLUMNS
+  id INT PRIMARY KEY,
+  name VARCHAR(30)
 );
 
--- Drops role_db if it exists already
-DROP DATABASE IF EXISTS role_db;
--- Creates the "role_db" database
-CREATE DATABASE role_db;
-
-CREATE TABLE employee_role(
-    id INT,
-    title VARCHAR(30),
-    salary VARCHAR(30),
-    department_id INT,
-    PRIMARY KEY (id)
+CREATE TABLE role (
+  -- CREATE id AS INTERGER,
+  id INT PRIMARY KEY auto_increment,
+  -- title AS VARCHAR
+  tile VARCHAR(30),
+  -- salary AS DECIMAL
+  salary DECIMAL(7,2),
+  -- department_id AS INTEGER
+  department_id INT,
+  -- MAKE department_id AS FOREIGN KEY REFERENCING department TABLE AND
+  -- MAKE AN CONSTRAINT 'ON DELETEN CASCADE' (WITHOUT QUOTES) ON THIS FOREIGN KEY
 );
 
--- Drops department_db if it exists already
-DROP DATABASE IF EXISTS department_db;
--- Creates the "department_db" database
-CREATE DATABASE department_db;
-
-CREATE TABLE department(
-    id INT,
-    department_name VARCHAR(30),
-    PRIMARY KEY (id)
+CREATE TABLE employee (
+  -- CREATE COLUMNS
+  --  id AS INT
+  id INT PRIMARY KEY auto_increment,
+  --  first_name AS VARCHAR 
+  first_name VARCHAR(30),
+  -- last_name AS VARCHAR
+  last_name VARCHAR(30),
+  --  role_id AS INTEGER
+  role_id INT,
+  -- manager_id AS INT
+  manager_id INT
+  -- MAKE role_id AS FOREIGN KEY REFERENCING role TABLE AND MAKE CONSTRAINT ON DELETE CASCADE ON THIS FOREIGN KEY
+  -- MAKE manager_id AS FOREIGN KEY REFERENCING employee TABLE ITSELF AND MAKE CONSTRAINT ON DELETE SET NULL ON THIS FOREIGN KEY
 );
