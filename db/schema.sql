@@ -6,7 +6,7 @@ USE employees;
 CREATE TABLE department (
   -- CREATE id, name COLUMNS
   id INT PRIMARY KEY auto_increment,
-  name VARCHAR(30)
+  department VARCHAR(30)
 );
 
 CREATE TABLE role (
