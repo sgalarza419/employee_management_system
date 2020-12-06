@@ -12,10 +12,10 @@ class DB {
       // CREATE SELECT STATMENT WITH THE FOLLOWING COLUMNS FROM THREE TABLES.
       // SELECT id, first_name, last_name FROM employee TABLE AND SELECT department name from department TABLE AND SELECT salary FROM role TABLE
       // YOUR NEED TO USE LEFT JOINS TO JOIN THREE TABLES
-      `SELECT id, first_name, last_name, salary 
+      `SELECT employee.id, first_name, last_name, name, salary
       FROM employee
-      LEFT JOIN role ON employee.role_id = role.id;`
-
+      LEFT JOIN role ON employee.role_id = role.id
+      LEFT JOIN department ON role.department_id = department.id;`
     );
   }
 
