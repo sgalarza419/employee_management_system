@@ -198,8 +198,8 @@ async function viewRoles() {
 async function addRole() {
   const departments = await db.findAllDepartments();
 
-  const departmentChoices = departments.map(({ id, name }) => ({
-    name: name,
+  const departmentChoices = departments.map(({ id, department }) => ({
+    name: department,
     value: id
   }));
 
@@ -239,7 +239,7 @@ async function viewDepartments() {
 async function addDepartment() {
   const department = await prompt([
     {
-      name: "name",
+      name: "department",
       message: "What is the name of the department?"
     }
   ]);

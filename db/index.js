@@ -35,9 +35,7 @@ class DB {
 
   // Update the given employee's role
   updateEmployeeRole(employeeId, roleId) {
-    return this.connection.query("UPDATE employee SET employee.id = ? WHERE role.id =?", [employeeId, roleId]
-      // YOUR CODE HERE
-    );
+    return this.connection.query("UPDATE employee SET employee.role_id = ? WHERE employee.id = ?", [employeeId, roleId]);
   }
 
   // Update the given employee's manager
@@ -80,7 +78,7 @@ class DB {
 
   // Create a new department
   createDepartment(department) {
-    return this.connection.query("INSERT INTO role SET ?", department);
+    return this.connection.query("INSERT INTO department SET ?", department);
   }
 
   // Find all employees in a given department, join with roles to display role titles
