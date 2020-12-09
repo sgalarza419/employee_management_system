@@ -12,7 +12,7 @@ class DB {
       // CREATE SELECT STATMENT WITH THE FOLLOWING COLUMNS FROM THREE TABLES.
       // SELECT id, first_name, last_name FROM employee TABLE AND SELECT department name from department TABLE AND SELECT salary FROM role TABLE
       // YOUR NEED TO USE LEFT JOINS TO JOIN THREE TABLES
-      `SELECT employee.id, first_name, last_name, department, salary
+      `SELECT employee.id, first_name, last_name, title, department, salary
       FROM employee
       LEFT JOIN role ON employee.role_id = role.id
       LEFT JOIN department ON role.department_id = department.id;`
@@ -29,13 +29,14 @@ class DB {
 
   // Create a new employee
   createEmployee(employee) {
+    // console.log(employee);
     return this.connection.query("INSERT INTO employee SET ?", employee);
   }
 
 
   // Update the given employee's role
   updateEmployeeRole(employeeId, roleId) {
-    return this.connection.query("UPDATE employee SET employee.role_id = ? WHERE employee.id = ?", [employeeId, roleId]);
+    return this.connection.query("UPDATE employee SET employee.role_id = ? WHERE employee.id = ?", [roleId, employeeId]);
   }
 
   // Update the given employee's manager
