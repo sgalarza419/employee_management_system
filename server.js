@@ -2,7 +2,7 @@ const {
   prompt
 } = require("inquirer");
 const logo = require("asciiart-logo");
-const db = require("./db/orm");
+const db = require("./config/orm");
 require("console.table");
 
 init();

@@ -13,9 +13,10 @@ class DB {
       // SELECT id, first_name, last_name FROM employee TABLE AND SELECT department name from department TABLE AND SELECT salary FROM role TABLE
       // YOUR NEED TO USE LEFT JOINS TO JOIN THREE TABLES
       `SELECT employee.id, first_name, last_name, title, department, salary
-      FROM employee
-      LEFT JOIN role ON employee.role_id = role.id
-      LEFT JOIN department ON role.department_id = department.id;`
+      FROM employee LEFT JOIN role 
+      ON employee.role_id = role.id
+      LEFT JOIN department
+      ON role.department_id = department.id;`
     );
   }
 
@@ -54,8 +55,8 @@ class DB {
       // id, title, salary FROM role TABLE AND department name FROM department TABLE
       // YOU NEED TO USE LEFT JOIN TO JOIN role and department TABLES
       `SELECT role.id, role.title, role.salary, department.department
-      FROM role
-      LEFT JOIN department ON department.id = role.department_id`
+      FROM role LEFT JOIN department 
+      ON department.id = role.department_id`
     );
   }
 
@@ -87,7 +88,7 @@ class DB {
     return this.connection.query(
       `SELECT employee.id, employee.first_name, employee.last_name, role.title FROM employee 
       LEFT JOIN role on employee.role_id = role.id 
-      LEFT JOIN department department on role.department_id = department.id 
+      LEFT JOIN department on role.department_id = department.id 
       WHERE department.id = ?;`,
       departmentId
     );
