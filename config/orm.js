@@ -30,7 +30,6 @@ class DB {
 
   // Create a new employee
   createEmployee(employee) {
-    console.log(employee);
     return this.connection.query("INSERT INTO employee SET ?;", employee);
   }
 
@@ -62,7 +61,6 @@ class DB {
 
   // Create a new role
   createRole(role) {
-    console.log(role);
     return this.connection.query('INSERT INTO role SET ?;', role)
   }
 
