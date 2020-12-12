@@ -2,7 +2,7 @@ const {
   prompt
 } = require("inquirer");
 const logo = require("asciiart-logo");
-const db = require("./db");
+const db = require("./db/orm");
 require("console.table");
 
 init();
@@ -18,6 +18,7 @@ function init() {
   loadMainPrompts();
 }
 
+//Prompts
 async function loadMainPrompts() {
   const {
     choice
@@ -112,12 +113,15 @@ async function loadMainPrompts() {
   }
 }
 
+// View employees
 async function viewEmployees() {
+  // function to find employees
   const employees = await db.findAllEmployees();
 
   console.log("\n");
+  // list all employees
   console.table(employees);
-
+// Loads main prompts
   loadMainPrompts();
 }
 
@@ -234,7 +238,6 @@ async function addRole() {
       choices: departmentChoices
     }
   ]);
-console.log(role);
   await db.createRole(role);
 
   console.log(`Added ${role.title} to the database`);

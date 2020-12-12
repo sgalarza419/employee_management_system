@@ -22,15 +22,15 @@ class DB {
   // Find all employees except the given employee id
   findAllPossibleManagers(employeeId) {
     return this.connection.query(
-      "SELECT id, first_name, last_name FROM employee WHERE id != ?",
+      "SELECT id, first_name, last_name FROM employee WHERE id != ?;",
       employeeId
     );
   }
 
   // Create a new employee
   createEmployee(employee) {
-    // console.log(employee);
-    return this.connection.query("INSERT INTO employee SET ?", employee);
+    console.log(employee);
+    return this.connection.query("INSERT INTO employee SET ?;", employee);
   }
 
 
@@ -42,7 +42,7 @@ class DB {
   // Update the given employee's manager
   updateEmployeeManager(employeeId, managerId) {
     return this.connection.query(
-      "UPDATE employee SET manager_id = ? WHERE id = ?",
+      "UPDATE employee SET manager_id = ? WHERE id = ?;",
       [managerId, employeeId]
     );
   }
@@ -53,16 +53,16 @@ class DB {
       // SELECT THE FOLLOWING COLUMNS:
       // id, title, salary FROM role TABLE AND department name FROM department TABLE
       // YOU NEED TO USE LEFT JOIN TO JOIN role and department TABLES
-      `SELECT employee.id, title, salary, department
-      FROM employee
-      LEFT JOIN role ON employee.role_id = role.id
-      LEFT JOIN department ON role.department_id = department.id;`
+      `SELECT role.id, role.title, role.salary, department.department
+      FROM role
+      LEFT JOIN department ON department.id = role.department_id`
     );
   }
 
   // Create a new role
   createRole(role) {
-    return this.connection.query("INSERT INTO role SET ?", role);
+    console.log(role);
+    return this.connection.query('INSERT INTO role SET ?;', role)
   }
 
 
@@ -73,13 +73,13 @@ class DB {
       AS utilized_budget FROM department 
       LEFT JOIN role ON role.department_id = department.id 
       LEFT JOIN employee ON employee.role_id = role.id 
-      GROUP BY department.id, department.department`
+      GROUP BY department.id, department.department;`
     );
   }
 
   // Create a new department
   createDepartment(department) {
-    return this.connection.query("INSERT INTO department SET ?", department);
+    return this.connection.query("INSERT INTO department SET ?;", department);
   }
 
   // Find all employees in a given department, join with roles to display role titles
